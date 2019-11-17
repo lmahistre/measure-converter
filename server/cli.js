@@ -33,7 +33,7 @@ exports.start = function(args) {
 
 exports.publish = function(args) {
 	const zip = require('./zip.js');
-	tasks.jsAddon().then(tasks.cssAddon).then(zip.addon).then(zip.source);
+	tasks.jsAddon().then(tasks.cssAddon).then(tasks.zip);
 }
 
 

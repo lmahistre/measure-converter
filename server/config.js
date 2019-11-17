@@ -16,7 +16,7 @@ module.exports = {
 			],
 		},
 		entry : {
-			hexc :[
+			app :[
 				appDirName+"/src/js/entry-site.js",
 			],
 		},
@@ -43,7 +43,7 @@ module.exports = {
 			],
 		},
 		entry : {
-			hexc :[
+			app :[
 				appDirName+"/src/js/entry-addon.js",
 			],
 		},
@@ -67,18 +67,36 @@ module.exports = {
 		helpers: [],
 	},
 	app : {
-		port : 3007,
+		port : 3016,
 	},
 	cssSite : {
 		inputFolder : appDirName+'/src/less',
 		inputFilename : 'index.less',
 		outputFolder : appDirName+'/public',
-		outputFilename : 'hexc.css',
+		outputFilename : 'style.css',
 	},
 	cssAddon : {
 		inputFolder : appDirName+'/src/less',
 		inputFilename : 'index.less',
 		outputFolder : appDirName+'/addon',
-		outputFilename : 'hexc.css',
+		outputFilename : 'style.css',
+	},
+	zipSource : {
+		directories : [
+			'public',
+			'addon',
+			'server',
+			'src',
+		],
+		files : [
+			'.gitignore',
+			'.travis.yml',
+			'build.js',
+			'CHANGELOG.md',
+			'package.json',
+			'package-lock.json',
+			'README.fr.md',
+			'README.md',
+		],
 	},
 };

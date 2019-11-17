@@ -1,13 +1,14 @@
 const React = require('react');
 
 class Vue extends React.Component {
+
 	constructor (props) {
 		super();
-		this.decimalRef = React.createRef();
+		this.mainFieldRef = React.createRef();
 	}
 
 	componentDidMount () {
-		this.decimalRef.current.focus();
+		this.mainFieldRef.current.focus();
 	}
 
 	render () {
@@ -17,106 +18,37 @@ class Vue extends React.Component {
 				<table>
 					<tbody>
 						<tr>
-							<td className="label" title={"Decimal"}>
-								<label className="short">{"Dec"}</label>
-								<label className="long">{"Decimal"}</label>
+							<td className="label" title={"Centimeters"}>
+								<label className="short">{"cm"}</label>
+								<label className="long">{"Centimeter"}</label>
 							</td>
 							<td className="input">
 								<div className="input-container">
 									<input
-										id="decimal"
+										id="centimeter"
 										placeholder={"Decimal"}
 										className="large"
 										onChange={props.handleChange}
-										value={props.decimal}
-										ref={this.decimalRef}
+										value={props.centimeter}
+										ref={this.mainFieldRef}
 									/>
 								</div>
 							</td>
 						</tr>
 						<tr>
-							<td className="label" title={"Hexadecimal"}>
-								<label className="short">{"Hex"}</label>
-								<label className="long">{"Hexadecimal"}</label>
+							<td className="label" title={"Inches"}>
+								<label className="short">{"in"}</label>
+								<label className="long">{"Inches"}</label>
 							</td>
 							<td className="input">
 								<div className="input-container">
 									<input
-										id="hexadecimal"
-										placeholder={"Hexadecimal"}
+										id="inch"
+										placeholder={"Inches"}
 										className="large"
 										onChange={props.handleChange}
-										value={props.hexadecimal}
+										value={props.inch}
 									/>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td className="label" title={"Binary"}>
-								<label className="short">{"Bin"}</label>
-								<label className="long">{"Binary"}</label>
-							</td>
-							<td className="input">
-								<div className="input-container">
-									<input
-										id="binary"
-										placeholder={"Binary"}
-										className="large"
-										onChange={props.handleChange}
-										value={props.binary}
-									/>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td className="label" title={"Octal"}>
-								<label className="short">{"Oct"}</label>
-								<label className="long">{"Octal"}</label>
-							</td>
-							<td className="input">
-								<div className="input-container">
-									<input
-										id="octal"
-										placeholder={"Octal"}
-										className="large"
-										onChange={props.handleChange}
-										value={props.octal}
-									/>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td className="label" title={"Base 256"}>
-								<label className="short">{"256"}</label>
-								<label className="long">{"Base 256"}</label>
-							</td>
-							<td className="input">
-								<div className="input-container">
-									<input
-										id="base256"
-										placeholder={"Base 256 / RGB"}
-										className="large"
-										onChange={props.handleChange}
-										value={props.base256}
-									/>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td className="label">
-								<label className="short">{"Color"}</label>
-								<label className="long">{"Color"}</label>
-							</td>
-							<td className="input">
-								<div className="input-container">
-									<div id="color_name" className="medium">{props.colorName}</div>
-									<div
-										id="color-indicator"
-										className="color-indicator"
-										style={ props.color ? {
-											backgroundColor : '#'+props.color,
-										} : {} }
-									>&nbsp;</div>
 								</div>
 							</td>
 						</tr>

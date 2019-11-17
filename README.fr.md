@@ -1,14 +1,12 @@
-# Hexconverter
+# Measure Converter
 
 ## Utilisation
 
-Cette extension convertit instantanément des chiffres dans différents format : décimal, binaire, octal, hexadécimal et en base 256.
-
-Si la valeur hexadécimale correspond à une couleur, cette couleur est affichée au format RGB décimal et un indicateur affiche le rendu de la couleur. Si il existe une couleur HTML correspondante, son nom est affiché.
+Cette extension convertit instantanément des mesures en centimètres et en pouces.
 
 Il est possible d'ouvrir le convertisseur dans une fenêtre séparée pour éviter de perdre les données entrées.
 
-Page de l'extension : [https://addons.mozilla.org/firefox/addon/hexconverter/](https://addons.mozilla.org/firefox/addon/hexconverter/)
+L'extension n'est pas encore publiée.
 
 ## Développement
 

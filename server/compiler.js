@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const fs = require('fs');
 const config = require('./config.js');
 
-
 const css = function(conf) {
 	const less = require('less');
 	return new Promise(function(resolve, reject) {
@@ -113,7 +112,6 @@ exports.start = function () {
 		}
 	});
 }
-
 
 exports.test = function(args) {
 	return new Promise(function (resolve, reject) {

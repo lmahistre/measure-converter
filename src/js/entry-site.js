@@ -16,7 +16,7 @@ const addServiceWorker = function () {
 }
 
 window.onload = function() {
-	document.title = 'Hexconverter';
+	document.title = 'Measure Converter';
 
 	ReactDOM.render(
 		React.createElement(Main),

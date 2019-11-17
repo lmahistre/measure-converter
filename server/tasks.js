@@ -48,3 +48,15 @@ exports.test = function () {
 		console.log(chalk.red(error));
 	});
 }
+
+exports.zip = function() {
+	const zip = require('./zip.js');
+	return zip.addon().then(function(result) {
+		console.log(chalk.green(result));
+		return zip.source();
+	}).then(function(result) {
+		console.log(chalk.green(result));
+	}).catch(function (error) {
+		console.log(chalk.red(error));
+	});
+}
