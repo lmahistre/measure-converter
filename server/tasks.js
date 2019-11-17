@@ -60,3 +60,40 @@ exports.zip = function() {
 		console.log(chalk.red(error));
 	});
 }
+
+exports.images = function() {
+	const fs = require('fs');
+	const sharp = require('sharp');
+
+	return new Promise(function(resolve, reject) {
+		if (!fs.existsSync('./public/img')) {
+			fs.mkdirSync('./public/img');
+		}
+		if (!fs.existsSync('./addon/img')) {
+			fs.mkdirSync('./addon/img');
+		}
+
+		fs.copyFileSync('./src/img/logo-512.png', './addon/img/logo-512.png');
+		fs.copyFileSync('./src/img/logo-512.png', './public/img/logo-512.png');
+		fs.copyFileSync('./src/img/new_window.png', './addon/img/new_window.png');
+		fs.copyFileSync('./src/img/new_window.png', './public/img/new_window.png');
+
+		const formats = [32, 48, 64, 96, 128];
+
+		Promise.all(formats.map(function(format) {
+			return sharp('./src/img/logo-512.png')
+			.resize(format)
+			.toFile('./addon/img/logo-'+format+'.png')
+			.catch(function(error) {
+				reject(error);
+			});
+		})).then(function() {
+			for (let i=0; i<formats.length; i++) {
+				fs.copyFileSync('./addon/img/logo-'+formats[i]+'.png', './public/img/logo-'+formats[i]+'.png');
+			}
+
+			console.log(chalk.green('Images have been generated'));
+			resolve();
+		});
+	});
+}

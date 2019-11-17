@@ -30,12 +30,10 @@ exports.start = function(args) {
 	tasks.start();
 }
 
-
 exports.publish = function(args) {
 	const zip = require('./zip.js');
 	tasks.jsAddon().then(tasks.cssAddon).then(tasks.zip);
 }
-
 
 exports.watch = function(args) {
 	const watch = require('node-watch');
@@ -46,4 +44,8 @@ exports.watch = function(args) {
 		console.log('%s changed.', name);
 		tasks.jsSite().then(tasks.cssSite);
 	});
+}
+
+exports.images = function(args) {
+	tasks.images();
 }

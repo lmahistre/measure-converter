@@ -12,6 +12,7 @@
     "js": "node build.js js",
     "css": "node build.js css",
     "dev": "node build.js dev",
+    "images": "node build.js images",
     "start": "node build.js start",
     "publish": "node build.js publish",
     "watch": "node build.js watch"
@@ -39,6 +40,7 @@
     "node-watch": "^0.5.9",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "sharp": "^0.23.3",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   },
