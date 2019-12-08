@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -92,7 +92,7 @@
 
 
 if (true) {
-  module.exports = __webpack_require__(5);
+  module.exports = __webpack_require__(6);
 } else {}
 
 
@@ -195,6 +195,50 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const converter = __webpack_require__(14);
+const tools = __webpack_require__(3);
+
+exports.length = function(input, type) {
+	const out = {};
+
+	if (type == 'centimeter') {
+		out.centimeter = tools.validateFloat(input);
+		out.inch = converter.convertCentimeterToInch(out.centimeter);
+	}
+	else if (type == 'inch') {
+		out.inch = tools.validateFloat(input);
+		out.centimeter = converter.convertInchToCentimeter(out.inch);
+	}
+	else {
+		return;
+	}
+
+	return out;
+}
+
+exports.weight = function(input, type) {
+	const out = {};
+
+	if (type == 'kilogram') {
+		out.kilogram = tools.validateFloat(input);
+		out.pound = converter.convertKilogramToPound(out.kilogram);
+	}
+	else if (type == 'pound') {
+		out.pound = tools.validateFloat(input);
+		out.kilogram = converter.convertPoundToKilogram(out.pound);
+	}
+	else {
+		return;
+	}
+
+	return out;
+}
+
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports) {
 
 
@@ -220,19 +264,19 @@ exports.validateFloat = function(val) {
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(4);
-
-
-/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__(5);
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
 const React = __webpack_require__(0);
-const ReactDOM = __webpack_require__(6);
-const Main = __webpack_require__(10);
+const ReactDOM = __webpack_require__(7);
+const Main = __webpack_require__(11);
 
 const addServiceWorker = function () {
 	if ('serviceWorker' in navigator) {
@@ -255,12 +299,12 @@ window.onload = function() {
 		document.getElementById('application-root')
 	);
 
-	addServiceWorker();
+	// addServiceWorker();
 }
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -292,7 +336,7 @@ __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentDispatcher:I,Rea
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -321,12 +365,12 @@ if (true) {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(7);
+  module.exports = __webpack_require__(8);
 } else {}
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -342,7 +386,7 @@ if (true) {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0),n=__webpack_require__(1),q=__webpack_require__(8);function u(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(u(227));var ba=null,ca={};
+var aa=__webpack_require__(0),n=__webpack_require__(1),q=__webpack_require__(9);function u(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(u(227));var ba=null,ca={};
 function da(){if(ba)for(var a in ca){var b=ca[a],c=ba.indexOf(a);if(!(-1<c))throw Error(u(96,a));if(!ea[c]){if(!b.extractEvents)throw Error(u(97,a));ea[c]=b;c=b.eventTypes;for(var d in c){var e=void 0;var f=c[d],g=b,h=d;if(fa.hasOwnProperty(h))throw Error(u(99,h));fa[h]=f;var k=f.phasedRegistrationNames;if(k){for(e in k)k.hasOwnProperty(e)&&ha(k[e],g,h);e=!0}else f.registrationName?(ha(f.registrationName,g,h),e=!0):e=!1;if(!e)throw Error(u(98,d,a));}}}}
 function ha(a,b,c){if(ia[a])throw Error(u(100,a));ia[a]=b;ja[a]=b.eventTypes[c].dependencies}var ea=[],fa={},ia={},ja={};function ka(a,b,c,d,e,f,g,h,k){var l=Array.prototype.slice.call(arguments,3);try{b.apply(c,l)}catch(m){this.onError(m)}}var la=!1,ma=null,na=!1,oa=null,pa={onError:function(a){la=!0;ma=a}};function qa(a,b,c,d,e,f,g,h,k){la=!1;ma=null;ka.apply(pa,arguments)}
 function ra(a,b,c,d,e,f,g,h,k){qa.apply(this,arguments);if(la){if(la){var l=ma;la=!1;ma=null}else throw Error(u(198));na||(na=!0,oa=l)}}var sa=null,ua=null,va=null;function wa(a,b,c){var d=a.type||"unknown-event";a.currentTarget=va(c);ra(d,b,void 0,a);a.currentTarget=null}function xa(a,b){if(null==b)throw Error(u(30));if(null==a)return b;if(Array.isArray(a)){if(Array.isArray(b))return a.push.apply(a,b),a;a.push(b);return a}return Array.isArray(b)?[a].concat(b):[a,b]}
@@ -623,19 +667,19 @@ rendererPackageName:"react-dom"});var Dk={default:Ck},Ek=Dk&&Ck||Dk;module.expor
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 if (true) {
-  module.exports = __webpack_require__(9);
+  module.exports = __webpack_require__(10);
 } else {}
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -664,7 +708,7 @@ exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNo
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -687,9 +731,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var React = __webpack_require__(0);
 
-var compute = __webpack_require__(11);
-
-var Vue = __webpack_require__(13);
+var Vue = __webpack_require__(12);
 
 var Main =
 /*#__PURE__*/
@@ -717,13 +759,6 @@ function (_React$Component) {
   }
 
   _createClass(Main, [{
-    key: "handleChange",
-    value: function handleChange(event) {
-      var origin = event.target.attributes.id.value;
-      var inputValue = event.target.value;
-      this.setState(compute(inputValue, origin));
-    }
-  }, {
     key: "openNewWindow",
     value: function openNewWindow(event) {
       try {
@@ -741,9 +776,6 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return React.createElement(Vue, {
-        handleChange: this.handleChange.bind(this),
-        centimeter: this.state.centimeter,
-        inch: this.state.inch,
         openNewWindow: this.openNewWindow.bind(this),
         showNewWindow: this.showNewWindow
       });
@@ -756,48 +788,7 @@ function (_React$Component) {
 module.exports = Main;
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const converter = __webpack_require__(12);
-const tools = __webpack_require__(2);
-
-module.exports = function(input, type) {
-	const out = {};
-
-	if (type == 'centimeter') {
-		out.centimeter = tools.validateFloat(input);
-		out.inch = converter.convertCentimeterToInch(out.centimeter);
-	}
-	else if (type == 'inch') {
-		out.inch = tools.validateFloat(input);
-		out.centimeter = converter.convertInchToCentimeter(out.inch);
-	}
-	else {
-		return;
-	}
-
-	return out;
-}
-
-
-/***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const tools = __webpack_require__(2);
-
-exports.convertCentimeterToInch = function(cm) {
-	return tools.floatval(cm) / 2.54;
-}
-
-exports.convertInchToCentimeter = function(inch) {
-	return tools.floatval(inch) * 2.54;
-}
-
-
-/***/ }),
-/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -820,70 +811,56 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var React = __webpack_require__(0);
 
+var ConverterLength = __webpack_require__(13);
+
+var ConverterWeight = __webpack_require__(15);
+
+var converters = {
+  length: ConverterLength,
+  weight: ConverterWeight
+};
+
 var Vue =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(Vue, _React$Component);
 
-  function Vue(props) {
+  function Vue() {
     var _this;
 
     _classCallCheck(this, Vue);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Vue).call(this));
-    _this.mainFieldRef = React.createRef();
+    _this.state = {
+      converter: 'length'
+    };
     return _this;
   }
 
   _createClass(Vue, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.mainFieldRef.current.focus();
+    key: "handleChangeConverter",
+    value: function handleChangeConverter(event) {
+      this.setState({
+        converter: event.target.value
+      });
     }
   }, {
     key: "render",
     value: function render() {
       var props = this.props;
       return React.createElement("div", null, React.createElement("table", null, React.createElement("tbody", null, React.createElement("tr", null, React.createElement("td", {
-        className: "label",
-        title: "Centimeters"
-      }, React.createElement("label", {
-        className: "short"
-      }, "cm"), React.createElement("label", {
-        className: "long"
-      }, "Centimeter")), React.createElement("td", {
-        className: "input"
-      }, React.createElement("div", {
-        className: "input-container"
-      }, React.createElement("input", {
-        id: "centimeter",
-        placeholder: "Decimal",
-        className: "large",
-        onChange: props.handleChange,
-        value: props.centimeter,
-        ref: this.mainFieldRef
-      })))), React.createElement("tr", null, React.createElement("td", {
-        className: "label",
-        title: "Inches"
-      }, React.createElement("label", {
-        className: "short"
-      }, "in"), React.createElement("label", {
-        className: "long"
-      }, "Inches")), React.createElement("td", {
-        className: "input"
-      }, React.createElement("div", {
-        className: "input-container"
-      }, React.createElement("input", {
-        id: "inch",
-        placeholder: "Inches",
-        className: "large",
-        onChange: props.handleChange,
-        value: props.inch
-      })))))), props.showNewWindow ? React.createElement("div", {
+        colSpan: 2
+      }, React.createElement("select", {
+        onChange: this.handleChangeConverter.bind(this),
+        value: this.state.converter
+      }, React.createElement("option", {
+        value: "length"
+      }, "Lengths"), React.createElement("option", {
+        value: "weight"
+      }, "Weights")))), React.createElement(converters[this.state.converter]))), props.showNewWindow ? React.createElement("div", {
         className: "actions"
       }, React.createElement("a", {
         href: "#",
-        id: "link_new_window",
         className: "action",
         title: "New window",
         onClick: props.openNewWindow
@@ -900,6 +877,235 @@ function (_React$Component) {
 }(React.Component);
 
 module.exports = Vue;
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(0);
+
+var compute = __webpack_require__(2);
+
+var ConverterLength =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ConverterLength, _React$Component);
+
+  _createClass(ConverterLength, [{
+    key: "handleChange",
+    value: function handleChange(event) {
+      var origin = event.target.attributes.name.value;
+      var inputValue = event.target.value;
+      this.setState(compute.length(inputValue, origin));
+    }
+  }]);
+
+  function ConverterLength(props) {
+    var _this;
+
+    _classCallCheck(this, ConverterLength);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ConverterLength).call(this));
+    _this.mainFieldRef = React.createRef();
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(ConverterLength, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.mainFieldRef.current.focus();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return React.createElement(React.Fragment, null, React.createElement("tr", null, React.createElement("td", {
+        className: "label",
+        title: "Centimeters"
+      }, React.createElement("label", {
+        className: "short"
+      }, "cm"), React.createElement("label", {
+        className: "long"
+      }, "Centimeter")), React.createElement("td", {
+        className: "input"
+      }, React.createElement("div", {
+        className: "input-container"
+      }, React.createElement("input", {
+        name: "centimeter",
+        placeholder: "Decimal",
+        className: "large",
+        onChange: this.handleChange.bind(this),
+        value: this.state.centimeter,
+        ref: this.mainFieldRef
+      })))), React.createElement("tr", null, React.createElement("td", {
+        className: "label",
+        title: "Inches"
+      }, React.createElement("label", {
+        className: "short"
+      }, "in"), React.createElement("label", {
+        className: "long"
+      }, "Inches")), React.createElement("td", {
+        className: "input"
+      }, React.createElement("div", {
+        className: "input-container"
+      }, React.createElement("input", {
+        name: "inch",
+        placeholder: "Inches",
+        className: "large",
+        onChange: this.handleChange.bind(this),
+        value: this.state.inch
+      })))));
+    }
+  }]);
+
+  return ConverterLength;
+}(React.Component);
+
+module.exports = ConverterLength;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const tools = __webpack_require__(3);
+
+exports.convertCentimeterToInch = function(cm) {
+	return tools.floatval(cm) / 2.54;
+}
+
+exports.convertInchToCentimeter = function(inch) {
+	return tools.floatval(inch) * 2.54;
+}
+
+exports.convertKilogramToPound = function(kg) {
+	return tools.floatval(kg) * 0.45359237;
+}
+
+exports.convertPoundToKilogram = function(kg) {
+	return tools.floatval(kg) / 0.45359237;
+}
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(0);
+
+var compute = __webpack_require__(2);
+
+var ConverterWeight =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ConverterWeight, _React$Component);
+
+  _createClass(ConverterWeight, [{
+    key: "handleChange",
+    value: function handleChange(event) {
+      var origin = event.target.attributes.name.value;
+      var inputValue = event.target.value;
+      this.setState(compute.weight(inputValue, origin));
+    }
+  }]);
+
+  function ConverterWeight(props) {
+    var _this;
+
+    _classCallCheck(this, ConverterWeight);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ConverterWeight).call(this));
+    _this.mainFieldRef = React.createRef();
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(ConverterWeight, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.mainFieldRef.current.focus();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return React.createElement(React.Fragment, null, React.createElement("tr", null, React.createElement("td", {
+        className: "label",
+        title: "Kilograms"
+      }, React.createElement("label", {
+        className: "short"
+      }, "kg"), React.createElement("label", {
+        className: "long"
+      }, "Kilograms")), React.createElement("td", {
+        className: "input"
+      }, React.createElement("div", {
+        className: "input-container"
+      }, React.createElement("input", {
+        name: "kilogram",
+        placeholder: "Kilograms",
+        className: "large",
+        onChange: this.handleChange.bind(this),
+        value: this.state.kilogram,
+        ref: this.mainFieldRef
+      })))), React.createElement("tr", null, React.createElement("td", {
+        className: "label",
+        title: "Pounds"
+      }, React.createElement("label", {
+        className: "short"
+      }, "lb"), React.createElement("label", {
+        className: "long"
+      }, "Pounds")), React.createElement("td", {
+        className: "input"
+      }, React.createElement("div", {
+        className: "input-container"
+      }, React.createElement("input", {
+        name: "pound",
+        placeholder: "Pounds",
+        className: "large",
+        onChange: this.handleChange.bind(this),
+        value: this.state.pound
+      })))));
+    }
+  }]);
+
+  return ConverterWeight;
+}(React.Component);
+
+module.exports = ConverterWeight;
 
 /***/ })
 /******/ ]);

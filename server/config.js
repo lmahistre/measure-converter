@@ -24,6 +24,9 @@ module.exports = {
 			path : appDirName +'/public',
 			filename : '[name].js',
 		},
+		resolve : {
+			extensions : ['.js', '.jsx',],
+		},
 		optimization : {
 			minimize : false,
 		},

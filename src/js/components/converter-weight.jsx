@@ -2,11 +2,11 @@ const React = require('react');
 
 const compute = require('../services/compute.js');
 
-class ConverterLength extends React.Component {
+class ConverterWeight extends React.Component {
 	handleChange (event) {
 		const origin = event.target.attributes.name.value;
 		const inputValue = event.target.value;
-		this.setState(compute.length(inputValue, origin));
+		this.setState(compute.weight(inputValue, origin));
 	}
 
 	constructor (props) {
@@ -23,36 +23,36 @@ class ConverterLength extends React.Component {
 		return (
 			<React.Fragment>
 				<tr>
-					<td className="label" title={"Centimeters"}>
-						<label className="short">{"cm"}</label>
-						<label className="long">{"Centimeter"}</label>
+					<td className="label" title={"Kilograms"}>
+						<label className="short">{"kg"}</label>
+						<label className="long">{"Kilograms"}</label>
 					</td>
 					<td className="input">
 						<div className="input-container">
 							<input
-								name="centimeter"
-								placeholder={"Decimal"}
+								name="kilogram"
+								placeholder={"Kilograms"}
 								className="large"
 								onChange={this.handleChange.bind(this)}
-								value={this.state.centimeter}
+								value={this.state.kilogram}
 								ref={this.mainFieldRef}
 							/>
 						</div>
 					</td>
 				</tr>
 				<tr>
-					<td className="label" title={"Inches"}>
-						<label className="short">{"in"}</label>
-						<label className="long">{"Inches"}</label>
+					<td className="label" title={"Pounds"}>
+						<label className="short">{"lb"}</label>
+						<label className="long">{"Pounds"}</label>
 					</td>
 					<td className="input">
 						<div className="input-container">
 							<input
-								name="inch"
-								placeholder={"Inches"}
+								name="pound"
+								placeholder={"Pounds"}
 								className="large"
 								onChange={this.handleChange.bind(this)}
-								value={this.state.inch}
+								value={this.state.pound}
 							/>
 						</div>
 					</td>
@@ -62,4 +62,4 @@ class ConverterLength extends React.Component {
 	}
 }
 
-module.exports = ConverterLength;
+module.exports = ConverterWeight;

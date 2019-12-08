@@ -1,7 +1,5 @@
 const React = require('react');
 
-const compute = require('../services/compute.js');
-
 const Vue = require('./vue.jsx');
 
 class Main extends React.Component {
@@ -20,14 +18,6 @@ class Main extends React.Component {
 		this.showNewWindow = location.href.indexOf('#') === -1 && 'undefined' !== typeof browser;
 	}
 
-
-	handleChange (event) {
-		const origin = event.target.attributes.id.value;
-		const inputValue = event.target.value;
-		this.setState(compute(inputValue, origin));
-	}
-
-
 	openNewWindow (event) {
 		try {
 			const creating = browser.windows.create({
@@ -44,9 +34,6 @@ class Main extends React.Component {
 
 	render () {
 		return <Vue
-			handleChange={this.handleChange.bind(this)}
-			centimeter={this.state.centimeter}
-			inch={this.state.inch}
 			openNewWindow={this.openNewWindow.bind(this)}
 			showNewWindow={this.showNewWindow}
 		/>;

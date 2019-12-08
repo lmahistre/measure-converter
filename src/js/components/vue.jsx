@@ -1,16 +1,26 @@
 const React = require('react');
 
 const ConverterLength = require('./converter-length');
+const ConverterWeight = require('./converter-weight');
+
+const converters = {
+	length : ConverterLength,
+	weight : ConverterWeight,
+}
 
 class Vue extends React.Component {
 
-	constructor (props) {
+	constructor() {
 		super();
-		this.mainFieldRef = React.createRef();
+		this.state = {
+			converter : 'length',
+		}
 	}
 
-	componentDidMount () {
-		this.mainFieldRef.current.focus();
+	handleChangeConverter(event) {
+		this.setState({
+			converter : event.target.value,
+		});
 	}
 
 	render () {
@@ -21,25 +31,25 @@ class Vue extends React.Component {
 					<tbody>
 						<tr>
 							<td colSpan={2}>
-								<select onChange={}>
+								<select onChange={this.handleChangeConverter.bind(this)} value={this.state.converter}>
 									<option value="length">Lengths</option>
+									<option value="weight">Weights</option>
 								</select>
 							</td>
 						</tr>
-						<ConverterLength />
+						{React.createElement(converters[this.state.converter])}
 					</tbody>
 				</table>
 				{props.showNewWindow ?
 					<div className="actions">
 						<a href="#"
-							id="link_new_window"
 							className="action"
 							title={"New window"}
 							onClick={props.openNewWindow}
 						>
 							<img src="img/new_window.png" alt="New window" />
 						</a>
-						<div className="clearfix"></div>
+						<div className="clearfix" />
 					</div>
 				: null }
 			</div>

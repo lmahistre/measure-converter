@@ -23,5 +23,5 @@ window.onload = function() {
 		document.getElementById('application-root')
 	);
 
-	addServiceWorker();
+	// addServiceWorker();
 }
