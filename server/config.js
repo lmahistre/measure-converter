@@ -54,6 +54,9 @@ module.exports = {
 			path : appDirName +'/addon',
 			filename : '[name].js',
 		},
+		resolve : {
+			extensions : ['.js', '.jsx',],
+		},
 		// optimization : {
 		// 	minimize : false,
 		// },

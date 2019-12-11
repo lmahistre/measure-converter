@@ -33,8 +33,8 @@ exports.jsAddon = function () {
 	});
 }
 
-exports.start = function () {
-	return compiler.start().then(function(port) {
+exports.serve = function () {
+	return compiler.serve().then(function(port) {
 		console.log(chalk.green('Server is listening on port '+port));
 	}).catch(function (error) {
 		console.log(chalk.red(error));

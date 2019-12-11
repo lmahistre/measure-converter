@@ -1,41 +1,41 @@
 {
-  "short_name": "Hexconverter",
-  "name": "Hexconverter",
+  "short_name": "Measure Converter",
+  "name": "Measure Converter",
   "icons": [
     {
-      "src": "img/hexc-32.png",
+      "src": "img/logo-32.png",
       "type": "image/png",
       "sizes": "32x32"
     },
     {
-      "src": "img/hexc-48.png",
+      "src": "img/logo-48.png",
       "type": "image/png",
       "sizes": "48x48"
     },
     {
-      "src": "img/hexc-64.png",
+      "src": "img/logo-64.png",
       "type": "image/png",
       "sizes": "64x64"
     },
     {
-      "src": "img/hexc-96.png",
+      "src": "img/logo-96.png",
       "type": "image/png",
       "sizes": "96x96"
     },
     {
-      "src": "img/hexc-128.png",
+      "src": "img/logo-128.png",
       "type": "image/png",
       "sizes": "128x128"
     },
     {
-      "src": "img/hexc-512.png",
+      "src": "img/logo-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": "https://lmahistre.github.io/app/hexconverter/",
+  "start_url": "https://lmahistre.github.io/app/measure-converter/",
   "background_color": "#EEE",
   "display": "standalone",
-  "scope": "/app/hexconverter",
+  "scope": "/app/measure-converter",
   "theme_color": "#EEE"
 }

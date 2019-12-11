@@ -88,7 +88,7 @@ exports.jsSite = function() {
 	return js(config.jsSite);
 }
 
-exports.start = function () {
+exports.serve = function () {
 	return new Promise(function(resolve, reject) {
 		try {
 			const express = require('express');

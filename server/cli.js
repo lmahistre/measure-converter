@@ -17,17 +17,21 @@ exports.test = function(args) {
 
 
 exports.dev = function(args) {
-	tasks.jsSite().then(tasks.css);
+	tasks.jsSite().then(tasks.cssSite);
 }
 
 
 exports.build = function(args) {
-	tasks.jsSite().then(tasks.cssSite).then(tasks.jsAddon).then(tasks.cssAddon)
-		.then(tasks.test);
+	tasks.jsSite()
+		.then(tasks.cssSite)
+		.then(tasks.jsAddon)
+		.then(tasks.cssAddon)
+		.then(tasks.test)
+		.then(tasks.images);
 }
 
 exports.start = function(args) {
-	tasks.start();
+	tasks.serve();
 }
 
 exports.publish = function(args) {
@@ -38,13 +42,28 @@ exports.publish = function(args) {
 exports.watch = function(args) {
 	const watch = require('node-watch');
 	console.log('Watching src');
-	watch('./src', { 
-		recursive: true 
+	watch('./src/js', { 
+		recursive: true,
 	}, function(evt, name) {
 		console.log('%s changed.', name);
-		tasks.jsSite().then(tasks.cssSite);
+		tasks.jsSite().then(tasks.jsAddon).then(function() {
+			console.log(chalk.green('JS successfully compiled'));
+		}).catch(function(error) {
+			console.log(chalk.red(error));
+		});
+	});
+	watch('./src/less', { 
+		recursive: true,
+	}, function(evt, name) {
+		console.log('%s changed.', name);
+		tasks.cssSite().then(tasks.cssAddon).then(function() {
+			console.log(chalk.green('CSS successfully compiled'));
+		}).catch(function(error) {
+			console.log(chalk.red(error));
+		});
 	});
 }
+
 
 exports.images = function(args) {
 	tasks.images();
