@@ -5,15 +5,6 @@ const Main = require('./components/main.jsx');
 window.onload = function() {
 	document.title = 'Measure Converter';
 
-	// const props = {};
-	// const url = location.href;
-	// if (url.indexOf('#') > -1) {
-	// 	const hexadecimal = url.split('#')[1];
-	// 	if (hexadecimal.length > 0) {
-	// 		props.hexadecimal = hexadecimal;
-	// 	}
-	// }
-
 	ReactDOM.render(
 		React.createElement(Main, props),
 		document.getElementById('application-root')
