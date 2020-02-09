@@ -6,7 +6,7 @@ class Main extends React.Component {
 
 	constructor (props) {
 		super();
-		if (props.centimeter) {
+		if (props && props.centimeter) {
 			this.state = compute(props.centimeter, 'centimeter');
 		}
 		else {

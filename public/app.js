@@ -745,7 +745,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Main).call(this));
 
-    if (props.centimeter) {
+    if (props && props.centimeter) {
       _this.state = compute(props.centimeter, 'centimeter');
     } else {
       _this.state = {
