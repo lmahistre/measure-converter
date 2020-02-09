@@ -32,8 +32,8 @@ class Vue extends React.Component {
 						<tr>
 							<td colSpan={2}>
 								<select onChange={this.handleChangeConverter.bind(this)} value={this.state.converter}>
-									<option value="length">Lengths</option>
-									<option value="weight">Weights</option>
+									<option value="length">Lengths (cm / in)</option>
+									<option value="weight">Weights (kg / lb)</option>
 								</select>
 							</td>
 						</tr>

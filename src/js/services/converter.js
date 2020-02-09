@@ -1,7 +1,11 @@
+const BigNumber = require('bignumber.js');
+
 const tools = require('./tools');
 
 exports.convertCentimeterToInch = function(cm) {
-	return tools.floatval(cm) / 2.54;
+	const dividend = new BigNumber(tools.floatval(cm));
+	return dividend.dividedBy(2.54).toString();
+	// return tools.floatval(cm) / 2.54;
 }
 
 exports.convertInchToCentimeter = function(inch) {
