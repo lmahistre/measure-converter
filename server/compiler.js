@@ -1,6 +1,10 @@
 const webpack = require('webpack');
 const fs = require('fs');
+const path = require('path');
+
 const config = require('./config.js');
+
+const baseDir = path.resolve(__dirname+'/..');
 
 const css = function(conf) {
 	const less = require('less');
@@ -93,16 +97,15 @@ exports.serve = function () {
 		try {
 			const express = require('express');
 			const app = express();
-			const path = require('path');
 
 			const port = config.app.port || 3007;
 
 			app.get('/', function (req, res) {
-				res.sendFile(path.resolve(__dirname+'/../public/index.html'));
+				res.sendFile(baseDir+'/public/index.html');
 			});
 
 			// Static files
-			app.use('/', express.static(path.resolve(__dirname+'/../public')));
+			app.use('/', express.static(baseDir+'/public'));
 
 			app.listen(port);
 			resolve(port);
@@ -127,5 +130,84 @@ exports.test = function(args) {
 			}
 		});
 		jasmine.execute();
+	});
+}
+
+exports.images = function() {
+	const sharp = require('sharp');
+
+	return new Promise(function(resolve, reject) {
+		if (!fs.existsSync('./public/img')) {
+			fs.mkdirSync('./public/img');
+		}
+		if (!fs.existsSync('./addon/img')) {
+			fs.mkdirSync('./addon/img');
+		}
+
+		fs.copyFileSync(baseDir+'/src/img/new_window.png', baseDir+'/addon/img/new_window.png');
+		fs.copyFileSync(baseDir+'/src/img/new_window.png', baseDir+'/public/img/new_window.png');
+
+		const formats = config.app.iconFormats;
+
+		Promise.all(formats.map(function(format) {
+			return sharp(baseDir+'/src/img/logo-512.png')
+			.resize(format)
+			.toFile(baseDir+'/addon/img/logo-'+format+'.png')
+			.catch(function(error) {
+				reject(error);
+			});
+		})).then(function() {
+			for (let i=0; i<formats.length; i++) {
+				fs.copyFileSync(baseDir+'/addon/img/logo-'+formats[i]+'.png', baseDir+'/public/img/logo-'+formats[i]+'.png');
+			}
+
+			resolve();
+		});
+	});
+}
+
+exports.manifestAddon = function() {
+	return new Promise(function (resolve, reject) {
+		const manifest = require(baseDir+'/src/static/manifest-addon');
+		fs.writeFileSync(baseDir+'/addon/manifest.json', JSON.stringify(manifest, null, '\t'));
+		resolve();
+	});
+}
+
+exports.manifestSite = function() {
+	return new Promise(function(resolve, reject) {
+		const manifest = require(baseDir+'/src/static/manifest-site.json');
+		const packageJson = require(baseDir+'/package.json');
+		manifest.short_name = config.app.name;
+		manifest.name = config.app.name;
+		manifest.icons = [];
+		for (let i=0; i<config.app.iconFormats.length; i++) {
+			manifest.icons.push({
+				src : 'img/logo-'+config.app.iconFormats[i]+'.png',
+				type : 'image/png',
+				sizes : config.app.iconFormats[i]+'x'+config.app.iconFormats[i],
+			});
+		}
+		manifest.background_color = config.app.themeColor;
+		manifest.theme_color = config.app.themeColor;
+
+		fs.writeFileSync(baseDir+'/public/manifest.json', JSON.stringify(manifest, null, '\t'));
+		resolve();
+	});
+}
+
+exports.htmlSite = function() {
+	return new Promise(function(resolve, reject) {
+		const html = require(baseDir+'/src/static/html-site')(config.app);
+		fs.writeFileSync(baseDir+'/public/index.html', html);
+		resolve();
+	});
+}
+
+exports.htmlAddon = function() {
+	return new Promise(function(resolve, reject) {
+		const html = require(baseDir+'/src/static/html-addon')(config.app);
+		fs.writeFileSync(baseDir+'/addon/index.html', html);
+		resolve();
 	});
 }

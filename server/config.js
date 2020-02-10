@@ -74,6 +74,9 @@ module.exports = {
 	},
 	app : {
 		port : 3016,
+		name : 'Measure Converter',
+		iconFormats : [32, 48, 64, 96, 128, 512],
+		themeColor : '#EEE',
 	},
 	cssSite : {
 		inputFolder : appDirName+'/src/less',

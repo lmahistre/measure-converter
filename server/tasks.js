@@ -62,38 +62,41 @@ exports.zip = function() {
 }
 
 exports.images = function() {
-	const fs = require('fs');
-	const sharp = require('sharp');
+	return compiler.images().then(function(result) {
+		console.log(chalk.green('Images have been generated'));
+	}).catch(function (error) {
+		console.log(chalk.red(error));
+	});
+}
 
-	return new Promise(function(resolve, reject) {
-		if (!fs.existsSync('./public/img')) {
-			fs.mkdirSync('./public/img');
-		}
-		if (!fs.existsSync('./addon/img')) {
-			fs.mkdirSync('./addon/img');
-		}
+exports.manifestAddon = function() {
+	return compiler.manifestAddon().then(function(result) {
+		console.log(chalk.green(result));
+	}).catch(function (error) {
+		console.log(chalk.red(error));
+	});
+}
 
-		fs.copyFileSync('./src/img/logo-512.png', './addon/img/logo-512.png');
-		fs.copyFileSync('./src/img/logo-512.png', './public/img/logo-512.png');
-		fs.copyFileSync('./src/img/new_window.png', './addon/img/new_window.png');
-		fs.copyFileSync('./src/img/new_window.png', './public/img/new_window.png');
+exports.manifestSite = function() {
+	return compiler.manifestSite().then(function(result) {
+		console.log(chalk.green(result));
+	}).catch(function (error) {
+		console.log(chalk.red(error));
+	});
+}
 
-		const formats = [32, 48, 64, 96, 128];
+exports.htmlAddon = function() {
+	return compiler.htmlAddon().then(function(result) {
+		console.log(chalk.green(result));
+	}).catch(function (error) {
+		console.log(chalk.red(error));
+	});
+}
 
-		Promise.all(formats.map(function(format) {
-			return sharp('./src/img/logo-512.png')
-			.resize(format)
-			.toFile('./addon/img/logo-'+format+'.png')
-			.catch(function(error) {
-				reject(error);
-			});
-		})).then(function() {
-			for (let i=0; i<formats.length; i++) {
-				fs.copyFileSync('./addon/img/logo-'+formats[i]+'.png', './public/img/logo-'+formats[i]+'.png');
-			}
-
-			console.log(chalk.green('Images have been generated'));
-			resolve();
-		});
+exports.htmlSite = function() {
+	return compiler.htmlSite().then(function(result) {
+		console.log(chalk.green(result));
+	}).catch(function (error) {
+		console.log(chalk.red(error));
 	});
 }

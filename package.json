@@ -1,7 +1,7 @@
 {
   "name": "measure-converter",
   "version": "1.0.0",
-  "description": "This addon instantly converts measures",
+  "description": "This addon instantly converts measurements from and to different units : centimeters and inches.",
   "main": "build.js",
   "directories": {
     "test": "src/tests"
@@ -41,6 +41,7 @@
     "node-watch": "^0.5.9",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-dom-server": "0.0.5",
     "sharp": "^0.23.3",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"

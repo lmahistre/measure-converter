@@ -5,28 +5,27 @@ exports.css = function (args) {
 	tasks.cssSite();
 }
 
-
 exports.js = function (args) {
 	tasks.jsSite();
 }
-
 
 exports.test = function(args) {
 	tasks.test();
 }
 
-
 exports.dev = function(args) {
 	tasks.jsSite().then(tasks.cssSite);
 }
-
 
 exports.build = function(args) {
 	tasks.jsSite()
 		.then(tasks.cssSite)
 		.then(tasks.jsAddon)
 		.then(tasks.cssAddon)
-		.then(tasks.test)
+		.then(tasks.manifestAddon)
+		.then(tasks.manifestSite)
+		.then(tasks.htmlAddon)
+		.then(tasks.htmlSite)
 		.then(tasks.images);
 }
 
@@ -64,7 +63,22 @@ exports.watch = function(args) {
 	});
 }
 
-
 exports.images = function(args) {
 	tasks.images();
+}
+
+exports.manifestAddon = function(args) {
+	tasks.manifestAddon();
+}
+
+exports.manifestSite = function(args) {
+	tasks.manifestSite();
+}
+
+exports.htmlAddon = function(args) {
+	tasks.htmlAddon();
+}
+
+exports.htmlSite = function(args) {
+	tasks.htmlSite();
 }
