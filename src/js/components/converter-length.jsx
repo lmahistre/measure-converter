@@ -25,7 +25,7 @@ class ConverterLength extends React.Component {
 				<tr>
 					<td className="label" title={"Centimeters"}>
 						<label className="short">{"cm"}</label>
-						<label className="long">{"Centimeter"}</label>
+						<label className="long">{"Centimeters"}</label>
 					</td>
 					<td className="input">
 						<div className="input-container">

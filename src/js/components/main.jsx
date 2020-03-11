@@ -22,7 +22,7 @@ class Main extends React.Component {
 		try {
 			const creating = browser.windows.create({
 				height : 260,
-				width : 340,
+				width : 400,
 				url : 'index.html#'+this.state.centimeter,
 				type : 'popup',
 			});

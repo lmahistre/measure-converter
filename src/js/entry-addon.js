@@ -3,11 +3,8 @@ const ReactDOM = require('react-dom');
 const Main = require('./components/main.jsx');
 
 window.onload = function() {
-	document.title = 'Measure Converter';
-	const props = {};
-
 	ReactDOM.render(
-		React.createElement(Main, props),
+		React.createElement(Main),
 		document.getElementById('application-root')
 	);
 }

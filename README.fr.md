@@ -2,11 +2,11 @@
 
 ## Utilisation
 
-Cette extension convertit instantanément des mesures en centimètres et en pouces.
+Cette extension convertit instantanément des mesures :
+* Longueurs : en centimètres et en pouces
+* Poids : kilogrammes et livres
 
 Il est possible d'ouvrir le convertisseur dans une fenêtre séparée pour éviter de perdre les données entrées.
-
-L'extension n'est pas encore publiée.
 
 ## Développement
 

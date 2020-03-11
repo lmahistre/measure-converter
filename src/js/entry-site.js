@@ -16,12 +16,10 @@ const addServiceWorker = function () {
 }
 
 window.onload = function() {
-	document.title = 'Measure Converter';
-
 	ReactDOM.render(
 		React.createElement(Main),
 		document.getElementById('application-root')
 	);
 
-	// addServiceWorker();
+	addServiceWorker();
 }

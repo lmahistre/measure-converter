@@ -292,14 +292,12 @@ const addServiceWorker = function () {
 }
 
 window.onload = function() {
-	document.title = 'Measure Converter';
-
 	ReactDOM.render(
 		React.createElement(Main),
 		document.getElementById('application-root')
 	);
 
-	// addServiceWorker();
+	addServiceWorker();
 }
 
 
@@ -764,7 +762,7 @@ function (_React$Component) {
       try {
         var creating = browser.windows.create({
           height: 260,
-          width: 340,
+          width: 400,
           url: 'index.html#' + this.state.centimeter,
           type: 'popup'
         });
@@ -944,7 +942,7 @@ function (_React$Component) {
         className: "short"
       }, "cm"), React.createElement("label", {
         className: "long"
-      }, "Centimeter")), React.createElement("td", {
+      }, "Centimeters")), React.createElement("td", {
         className: "input"
       }, React.createElement("div", {
         className: "input-container"

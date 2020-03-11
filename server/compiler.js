@@ -161,7 +161,7 @@ exports.images = function() {
 				fs.copyFileSync(baseDir+'/addon/img/logo-'+formats[i]+'.png', baseDir+'/public/img/logo-'+formats[i]+'.png');
 			}
 
-			resolve();
+			resolve('Images generated successfully');
 		});
 	});
 }
@@ -170,7 +170,7 @@ exports.manifestAddon = function() {
 	return new Promise(function (resolve, reject) {
 		const manifest = require(baseDir+'/src/static/manifest-addon');
 		fs.writeFileSync(baseDir+'/addon/manifest.json', JSON.stringify(manifest, null, '\t'));
-		resolve();
+		resolve('Manifest generated for addon');
 	});
 }
 
@@ -192,7 +192,7 @@ exports.manifestSite = function() {
 		manifest.theme_color = config.app.themeColor;
 
 		fs.writeFileSync(baseDir+'/public/manifest.json', JSON.stringify(manifest, null, '\t'));
-		resolve();
+		resolve('Manifest generated for site');
 	});
 }
 
@@ -200,7 +200,7 @@ exports.htmlSite = function() {
 	return new Promise(function(resolve, reject) {
 		const html = require(baseDir+'/src/static/html-site')(config.app);
 		fs.writeFileSync(baseDir+'/public/index.html', html);
-		resolve();
+		resolve('HTML generated for site');
 	});
 }
 
@@ -208,6 +208,6 @@ exports.htmlAddon = function() {
 	return new Promise(function(resolve, reject) {
 		const html = require(baseDir+'/src/static/html-addon')(config.app);
 		fs.writeFileSync(baseDir+'/addon/index.html', html);
-		resolve();
+		resolve('HTML generated for addon');
 	});
 }

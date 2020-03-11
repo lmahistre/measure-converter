@@ -8,7 +8,7 @@ module.exports = props => `<!DOCTYPE html>
 			<link rel="stylesheet" type="text/css" href="style.css" />
 			<link rel="manifest" href="manifest.json" />
 			<meta name="theme-color" content="${props.themeColor}" />
-			<script type="text/javascript" src="app.js" />
+			<script type="text/javascript" src="app.js"></script>
 		</head>
 		<body>
 			<div id="application-root">Javascript is required to use this app</div>
