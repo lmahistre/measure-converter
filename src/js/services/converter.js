@@ -20,3 +20,11 @@ exports.convertKilogramToPound = function(input) {
 exports.convertPoundToKilogram = function(input) {
 	return (new BigNumber(tools.floatval(input))).dividedBy(POUND_PER_KG).toFixed();
 }
+
+exports.convertCelsiusToFarenheit = function(input) {
+	return (new BigNumber(tools.floatval(input))).multipliedBy(9).dividedBy(5).plus(32).toFixed();
+}
+
+exports.convertFarenheitToCelsius = function(input) {
+	return (new BigNumber(tools.floatval(input))).minus(32).multipliedBy(5).dividedBy(9);
+}

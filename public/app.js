@@ -100,6 +100,68 @@ if (true) {
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
+const converter = __webpack_require__(14);
+const tools = __webpack_require__(3);
+
+exports.length = function(input, type) {
+	const out = {};
+
+	if (type == 'centimeter') {
+		out.centimeter = tools.validateFloat(input);
+		out.inch = converter.convertCentimeterToInch(out.centimeter);
+	}
+	else if (type == 'inch') {
+		out.inch = tools.validateFloat(input);
+		out.centimeter = converter.convertInchToCentimeter(out.inch);
+	}
+	else {
+		return;
+	}
+
+	return out;
+}
+
+exports.temperature = function(input, type) {
+	const out = {};
+
+	if (type == 'celsius') {
+		out.celsius = tools.validateFloat(input);
+		out.farenheit = converter.convertCelsiusToFarenheit(out.celsius);
+	}
+	else if (type == 'farenheit') {
+		out.farenheit = tools.validateFloat(input);
+		out.celsius = converter.convertFarenheitToCelsius(out.farenheit);
+	}
+	else {
+		return;
+	}
+
+	return out;
+}
+
+exports.weight = function(input, type) {
+	const out = {};
+
+	if (type == 'kilogram') {
+		out.kilogram = tools.validateFloat(input);
+		out.pound = converter.convertKilogramToPound(out.kilogram);
+	}
+	else if (type == 'pound') {
+		out.pound = tools.validateFloat(input);
+		out.kilogram = converter.convertPoundToKilogram(out.pound);
+	}
+	else {
+		return;
+	}
+
+	return out;
+}
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /*
 object-assign
@@ -194,50 +256,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const converter = __webpack_require__(14);
-const tools = __webpack_require__(3);
-
-exports.length = function(input, type) {
-	const out = {};
-
-	if (type == 'centimeter') {
-		out.centimeter = tools.validateFloat(input);
-		out.inch = converter.convertCentimeterToInch(out.centimeter);
-	}
-	else if (type == 'inch') {
-		out.inch = tools.validateFloat(input);
-		out.centimeter = converter.convertInchToCentimeter(out.inch);
-	}
-	else {
-		return;
-	}
-
-	return out;
-}
-
-exports.weight = function(input, type) {
-	const out = {};
-
-	if (type == 'kilogram') {
-		out.kilogram = tools.validateFloat(input);
-		out.pound = converter.convertKilogramToPound(out.kilogram);
-	}
-	else if (type == 'pound') {
-		out.pound = tools.validateFloat(input);
-		out.kilogram = converter.convertPoundToKilogram(out.pound);
-	}
-	else {
-		return;
-	}
-
-	return out;
-}
-
-
-/***/ }),
 /* 3 */
 /***/ (function(module, exports) {
 
@@ -315,7 +333,7 @@ window.onload = function() {
  * LICENSE file in the root directory of this source tree.
  */
 
-var h=__webpack_require__(1),n="function"===typeof Symbol&&Symbol.for,p=n?Symbol.for("react.element"):60103,q=n?Symbol.for("react.portal"):60106,r=n?Symbol.for("react.fragment"):60107,t=n?Symbol.for("react.strict_mode"):60108,u=n?Symbol.for("react.profiler"):60114,v=n?Symbol.for("react.provider"):60109,w=n?Symbol.for("react.context"):60110,x=n?Symbol.for("react.forward_ref"):60112,y=n?Symbol.for("react.suspense"):60113;n&&Symbol.for("react.suspense_list");
+var h=__webpack_require__(2),n="function"===typeof Symbol&&Symbol.for,p=n?Symbol.for("react.element"):60103,q=n?Symbol.for("react.portal"):60106,r=n?Symbol.for("react.fragment"):60107,t=n?Symbol.for("react.strict_mode"):60108,u=n?Symbol.for("react.profiler"):60114,v=n?Symbol.for("react.provider"):60109,w=n?Symbol.for("react.context"):60110,x=n?Symbol.for("react.forward_ref"):60112,y=n?Symbol.for("react.suspense"):60113;n&&Symbol.for("react.suspense_list");
 var z=n?Symbol.for("react.memo"):60115,aa=n?Symbol.for("react.lazy"):60116;n&&Symbol.for("react.fundamental");n&&Symbol.for("react.responder");n&&Symbol.for("react.scope");var A="function"===typeof Symbol&&Symbol.iterator;
 function B(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}var C={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},D={};
 function E(a,b,c){this.props=a;this.context=b;this.refs=D;this.updater=c||C}E.prototype.isReactComponent={};E.prototype.setState=function(a,b){if("object"!==typeof a&&"function"!==typeof a&&null!=a)throw Error(B(85));this.updater.enqueueSetState(this,a,b,"setState")};E.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};function F(){}F.prototype=E.prototype;function G(a,b,c){this.props=a;this.context=b;this.refs=D;this.updater=c||C}var H=G.prototype=new F;
@@ -384,7 +402,7 @@ if (true) {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0),n=__webpack_require__(1),q=__webpack_require__(9);function u(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(u(227));var ba=null,ca={};
+var aa=__webpack_require__(0),n=__webpack_require__(2),q=__webpack_require__(9);function u(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(u(227));var ba=null,ca={};
 function da(){if(ba)for(var a in ca){var b=ca[a],c=ba.indexOf(a);if(!(-1<c))throw Error(u(96,a));if(!ea[c]){if(!b.extractEvents)throw Error(u(97,a));ea[c]=b;c=b.eventTypes;for(var d in c){var e=void 0;var f=c[d],g=b,h=d;if(fa.hasOwnProperty(h))throw Error(u(99,h));fa[h]=f;var k=f.phasedRegistrationNames;if(k){for(e in k)k.hasOwnProperty(e)&&ha(k[e],g,h);e=!0}else f.registrationName?(ha(f.registrationName,g,h),e=!0):e=!1;if(!e)throw Error(u(98,d,a));}}}}
 function ha(a,b,c){if(ia[a])throw Error(u(100,a));ia[a]=b;ja[a]=b.eventTypes[c].dependencies}var ea=[],fa={},ia={},ja={};function ka(a,b,c,d,e,f,g,h,k){var l=Array.prototype.slice.call(arguments,3);try{b.apply(c,l)}catch(m){this.onError(m)}}var la=!1,ma=null,na=!1,oa=null,pa={onError:function(a){la=!0;ma=a}};function qa(a,b,c,d,e,f,g,h,k){la=!1;ma=null;ka.apply(pa,arguments)}
 function ra(a,b,c,d,e,f,g,h,k){qa.apply(this,arguments);if(la){if(la){var l=ma;la=!1;ma=null}else throw Error(u(198));na||(na=!0,oa=l)}}var sa=null,ua=null,va=null;function wa(a,b,c){var d=a.type||"unknown-event";a.currentTarget=va(c);ra(d,b,void 0,a);a.currentTarget=null}function xa(a,b){if(null==b)throw Error(u(30));if(null==a)return b;if(Array.isArray(a)){if(Array.isArray(b))return a.push.apply(a,b),a;a.push(b);return a}return Array.isArray(b)?[a].concat(b):[a,b]}
@@ -811,11 +829,14 @@ var React = __webpack_require__(0);
 
 var ConverterLength = __webpack_require__(13);
 
-var ConverterWeight = __webpack_require__(16);
+var ConverterTemperature = __webpack_require__(16);
+
+var ConverterWeight = __webpack_require__(17);
 
 var converters = {
   length: ConverterLength,
-  weight: ConverterWeight
+  weight: ConverterWeight,
+  temperature: ConverterTemperature
 };
 
 var Vue =
@@ -855,7 +876,9 @@ function (_React$Component) {
         value: "length"
       }, "Lengths (cm / in)"), React.createElement("option", {
         value: "weight"
-      }, "Weights (kg / lb)")))), React.createElement(converters[this.state.converter]))), props.showNewWindow ? React.createElement("div", {
+      }, "Weights (kg / lb)"), React.createElement("option", {
+        value: "temperature"
+      }, "Temperatures (\xB0C / \xB0F)")))), React.createElement(converters[this.state.converter]))), props.showNewWindow ? React.createElement("div", {
         className: "actions"
       }, React.createElement("a", {
         href: "#",
@@ -900,7 +923,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var React = __webpack_require__(0);
 
-var compute = __webpack_require__(2);
+var compute = __webpack_require__(1);
 
 var ConverterLength =
 /*#__PURE__*/
@@ -1004,6 +1027,14 @@ exports.convertKilogramToPound = function(input) {
 
 exports.convertPoundToKilogram = function(input) {
 	return (new BigNumber(tools.floatval(input))).dividedBy(POUND_PER_KG).toFixed();
+}
+
+exports.convertCelsiusToFarenheit = function(input) {
+	return (new BigNumber(tools.floatval(input))).multipliedBy(9).dividedBy(5).plus(32).toFixed();
+}
+
+exports.convertFarenheitToCelsius = function(input) {
+	return (new BigNumber(tools.floatval(input))).minus(32).multipliedBy(5).dividedBy(9);
 }
 
 
@@ -3930,7 +3961,108 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var React = __webpack_require__(0);
 
-var compute = __webpack_require__(2);
+var compute = __webpack_require__(1);
+
+module.exports =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ConverterTemperature, _React$Component);
+
+  _createClass(ConverterTemperature, [{
+    key: "handleChange",
+    value: function handleChange(event) {
+      var origin = event.target.attributes.name.value;
+      var inputValue = event.target.value;
+      this.setState(compute.temperature(inputValue, origin));
+    }
+  }]);
+
+  function ConverterTemperature(props) {
+    var _this;
+
+    _classCallCheck(this, ConverterTemperature);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ConverterTemperature).call(this));
+    _this.mainFieldRef = React.createRef();
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(ConverterTemperature, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.mainFieldRef.current.focus();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return React.createElement(React.Fragment, null, React.createElement("tr", null, React.createElement("td", {
+        className: "label",
+        title: "Celsius"
+      }, React.createElement("label", {
+        className: "short"
+      }, "°C"), React.createElement("label", {
+        className: "long"
+      }, "Celsius")), React.createElement("td", {
+        className: "input"
+      }, React.createElement("div", {
+        className: "input-container"
+      }, React.createElement("input", {
+        name: "celsius",
+        placeholder: "Celsius",
+        className: "large",
+        onChange: this.handleChange.bind(this),
+        value: this.state.celsius,
+        ref: this.mainFieldRef
+      })))), React.createElement("tr", null, React.createElement("td", {
+        className: "label",
+        title: "Farenheit"
+      }, React.createElement("label", {
+        className: "short"
+      }, "°F"), React.createElement("label", {
+        className: "long"
+      }, "Farenheit")), React.createElement("td", {
+        className: "input"
+      }, React.createElement("div", {
+        className: "input-container"
+      }, React.createElement("input", {
+        name: "farenheit",
+        placeholder: "Farenheit",
+        className: "large",
+        onChange: this.handleChange.bind(this),
+        value: this.state.farenheit
+      })))));
+    }
+  }]);
+
+  return ConverterTemperature;
+}(React.Component);
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = __webpack_require__(0);
+
+var compute = __webpack_require__(1);
 
 var ConverterWeight =
 /*#__PURE__*/

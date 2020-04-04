@@ -1,11 +1,13 @@
 const React = require('react');
 
 const ConverterLength = require('./converter-length');
+const ConverterTemperature = require('./converter-temperature');
 const ConverterWeight = require('./converter-weight');
 
 const converters = {
 	length : ConverterLength,
 	weight : ConverterWeight,
+	temperature : ConverterTemperature,
 }
 
 class Vue extends React.Component {
@@ -34,6 +36,7 @@ class Vue extends React.Component {
 								<select onChange={this.handleChangeConverter.bind(this)} value={this.state.converter}>
 									<option value="length">Lengths (cm / in)</option>
 									<option value="weight">Weights (kg / lb)</option>
+									<option value="temperature">Temperatures (°C / °F)</option>
 								</select>
 							</td>
 						</tr>

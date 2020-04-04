@@ -5,6 +5,7 @@
 This addon instantly converts measurements from and to different units:
 * Length: centimeters and inches
 * Weight: kilograms and pounds
+* Temperature: Celsius and Farenheit
 
 It is possible to display the converter in a separate window to avoid losing converted data.
 

@@ -2,6 +2,7 @@ body {
   font-family: Helvetica, sans-serif, Arial;
   font-size: 14px;
   background-color: #EEE;
+  min-width: 360px;
 }
 body table {
   width: 100%;
@@ -77,6 +78,7 @@ body div.clearfix {
 }
 @media (min-width: 360px) {
   body {
+    min-width: 360px;
     max-width: none;
   }
   body td.label {

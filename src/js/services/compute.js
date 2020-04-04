@@ -19,6 +19,24 @@ exports.length = function(input, type) {
 	return out;
 }
 
+exports.temperature = function(input, type) {
+	const out = {};
+
+	if (type == 'celsius') {
+		out.celsius = tools.validateFloat(input);
+		out.farenheit = converter.convertCelsiusToFarenheit(out.celsius);
+	}
+	else if (type == 'farenheit') {
+		out.farenheit = tools.validateFloat(input);
+		out.celsius = converter.convertFarenheitToCelsius(out.farenheit);
+	}
+	else {
+		return;
+	}
+
+	return out;
+}
+
 exports.weight = function(input, type) {
 	const out = {};
 

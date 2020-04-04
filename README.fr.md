@@ -5,6 +5,7 @@
 Cette extension convertit instantanément des mesures :
 * Longueurs : en centimètres et en pouces
 * Poids : kilogrammes et livres
+* Températures : degrés Celsius et Farenheit
 
 Il est possible d'ouvrir le convertisseur dans une fenêtre séparée pour éviter de perdre les données entrées.
 
