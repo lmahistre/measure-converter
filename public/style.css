@@ -1,6 +1,6 @@
 body {
   font-family: Helvetica, sans-serif, Arial;
-  font-size: 14px;
+  font-size: 16px;
   background-color: #EEE;
   min-width: 360px;
 }
@@ -10,9 +10,13 @@ body table {
 body td {
   padding: 4px 4px;
 }
+body td select {
+  font-family: Helvetica, sans-serif, Arial;
+  font-size: 16px;
+}
 body td.label {
   font-family: Helvetica, sans-serif, Arial;
-  font-size: 14px;
+  font-size: 16px;
   width: 30px;
   text-align: left;
 }
@@ -26,12 +30,13 @@ body td.input input {
   width: 100%;
   text-align: right;
   font-family: Helvetica, sans-serif, Arial;
-  font-size: 14px;
+  font-size: 16px;
   border-color: #DDD;
   border-width: 1px;
   border-style: solid;
   border-radius: 4px;
-  padding: 2px 4px;
+  padding: 2px 6px;
+  height: 24px;
   display: block;
 }
 body td.input div.input-container {

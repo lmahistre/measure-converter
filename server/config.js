@@ -1,6 +1,8 @@
 const path = require('path');
 const appDirName = path.resolve(__dirname+'/..');
 
+const TerserPlugin = require("terser-webpack-plugin");
+
 module.exports = {
 	jsSite : {
 		mode: 'production',
@@ -28,7 +30,10 @@ module.exports = {
 			extensions : ['.js', '.jsx',],
 		},
 		optimization : {
-			minimize : false,
+			minimizer: [new TerserPlugin({
+				extractComments: false,
+			})],
+			minimize : true,
 		},
 		node : false,
 	},
@@ -57,9 +62,12 @@ module.exports = {
 		resolve : {
 			extensions : ['.js', '.jsx',],
 		},
-		// optimization : {
-		// 	minimize : false,
-		// },
+		optimization : {
+			minimizer: [new TerserPlugin({
+				extractComments: false,
+			})],
+			minimize : true,
+		},
 		node : false,
 	},
 	test : {

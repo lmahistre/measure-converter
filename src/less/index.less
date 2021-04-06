@@ -1,6 +1,9 @@
+@fontSize : 16px;
+@fontFamily : Helvetica, sans-serif, Arial;
+
 body {
-	font-family: Helvetica, sans-serif, Arial;
-	font-size: 14px;
+	font-family: @fontFamily;
+	font-size: @fontSize;
 	background-color: #EEE;
 	min-width: 360px;
 
@@ -10,9 +13,14 @@ body {
 	td {
 		padding: 4px 4px;
 
+		select {
+			font-family: @fontFamily;
+			font-size: @fontSize;
+		}
+
 		&.label {
-			font-family: Helvetica, sans-serif, Arial;
-			font-size: 14px;
+			font-family: @fontFamily;
+			font-size: @fontSize;
 			width: 30px;
 			text-align: left;
 
@@ -27,13 +35,14 @@ body {
 			input {
 				width: 100%;
 				text-align: right;
-				font-family: Helvetica, sans-serif, Arial;
-				font-size: 14px;
+				font-family: @fontFamily;
+				font-size: @fontSize;
 				border-color: #DDD;
 				border-width: 1px;
 				border-style: solid;
 				border-radius: 4px;
-				padding: 2px 4px;
+				padding: 2px 6px;
+				height: 24px;
 				display: block;
 			}
 			div.input-container {
@@ -101,7 +110,6 @@ body {
 			}
 		}
 		td.input {
-			// width: 100%;
 			div.input-container input.small {
 				width: 28%;
 			}
