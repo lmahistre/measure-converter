@@ -14,7 +14,7 @@
     "dev": "node build.js dev",
     "images": "node build.js images",
     "start": "node build.js start",
-    "publish": "node build.js publish",
+    "publish": "node build.js build && extension-zipper",
     "watch": "node build.js watch"
   },
   "repository": {
@@ -28,29 +28,44 @@
   },
   "homepage": "https://addons.mozilla.org/firefox/addon/measure-converter",
   "devDependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/preset-env": "^7.7.1",
-    "@babel/preset-react": "^7.7.0",
-    "archiver": "^3.1.1",
-    "babel-loader": "^8.0.6",
-    "bignumber.js": "^9.0.0",
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "bignumber.js": "^9.0.1",
     "chalk": "^2.4.2",
     "express": "^4.17.1",
-    "jasmine": "^3.5.0",
-    "less": "^3.10.3",
-    "node-watch": "^0.5.9",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-dom-server": "0.0.5",
-    "sharp": "^0.23.3",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "extension-zipper": "github:lmahistre/extension-zipper",
+    "jasmine": "^3.7.0",
+    "less": "^4.1.1",
+    "node-watch": "^0.7.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sharp": "^0.28.1",
+    "webpack": "^5.30.0",
+    "webpack-cli": "^4.6.0"
   },
-  "dependencies": {},
   "babel": {
     "presets": [
       "@babel/env",
       "@babel/react"
+    ]
+  },
+  "extensionZipperConfig": {
+    "main": "addon",
+    "source": [
+      "public",
+      "addon",
+      "server",
+      "src",
+      ".gitignore",
+      ".travis.yml",
+      "build.js",
+      "CHANGELOG.md",
+      "package.json",
+      "package-lock.json",
+      "README.fr.md",
+      "README.md"
     ]
   }
 }

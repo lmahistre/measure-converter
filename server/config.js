@@ -90,22 +90,22 @@ module.exports = {
 		outputFolder : appDirName+'/addon',
 		outputFilename : 'style.css',
 	},
-	zipSource : {
-		directories : [
-			'public',
-			'addon',
-			'server',
-			'src',
-		],
-		files : [
-			'.gitignore',
-			'.travis.yml',
-			'build.js',
-			'CHANGELOG.md',
-			'package.json',
-			'package-lock.json',
-			'README.fr.md',
-			'README.md',
-		],
-	},
+	// zipSource : {
+	// 	directories : [
+	// 		'public',
+	// 		'addon',
+	// 		'server',
+	// 		'src',
+	// 	],
+	// 	files : [
+	// 		'.gitignore',
+	// 		'.travis.yml',
+	// 		'build.js',
+	// 		'CHANGELOG.md',
+	// 		'package.json',
+	// 		'package-lock.json',
+	// 		'README.fr.md',
+	// 		'README.md',
+	// 	],
+	// },
 };

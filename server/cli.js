@@ -33,15 +33,15 @@ exports.start = function(args) {
 	tasks.serve();
 }
 
-exports.publish = function(args) {
-	const zip = require('./zip.js');
-	tasks.jsAddon()
-		.then(tasks.cssAddon)
-		.then(tasks.manifestAddon)
-		.then(tasks.htmlAddon)
-		.then(tasks.images)
-		.then(tasks.zip);
-}
+// exports.publish = function(args) {
+// 	const zip = require('./zip.js');
+// 	tasks.jsAddon()
+// 		.then(tasks.cssAddon)
+// 		.then(tasks.manifestAddon)
+// 		.then(tasks.htmlAddon)
+// 		.then(tasks.images)
+// 		.then(tasks.zip);
+// }
 
 exports.watch = function(args) {
 	const watch = require('node-watch');
