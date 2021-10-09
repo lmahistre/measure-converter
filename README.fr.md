@@ -21,7 +21,7 @@ Les fichiers source Javascript et LESS sont dans le dossier `src`. Les fichiers 
 * `addon` contient les fichiers destinés à l'extension de Firefox
 * `public` contient les fichiers pour utiliser l'application comme une page web
 
-Il y a 2 fichiers générés : `hexc.js` et `hexc.css`.
+Il y a 2 fichiers générés : `app.js` et `style.css`.
 
 Pour compiler les fichiers Javascript et CSS :
 
