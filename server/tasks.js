@@ -1,15 +1,7 @@
 const compiler = require('./compiler');
 const chalk = require('chalk');
 
-exports.cssSite = function () {
-	return compiler.cssSite().then(function(result) {
-		console.log(chalk.green('CSS successfully compiled'));
-	}).catch(function (error) {
-		console.log(chalk.red(error));
-	});
-}
-
-exports.cssAddon = function () {
+exports.css = function () {
 	return compiler.cssAddon().then(function(result) {
 		console.log(chalk.green('CSS successfully compiled'));
 	}).catch(function (error) {
@@ -17,15 +9,7 @@ exports.cssAddon = function () {
 	});
 }
 
-exports.jsSite = function () {
-	return compiler.jsSite().then(function(result) {
-		console.log(chalk.green('JS successfully compiled'));
-	}).catch(function (error) {
-		console.log(chalk.red(error));
-	});
-}
-
-exports.jsAddon = function () {
+exports.js = function () {
 	return compiler.jsAddon().then(function(result) {
 		console.log(chalk.green('JS successfully compiled'));
 	}).catch(function (error) {
@@ -49,17 +33,17 @@ exports.test = function () {
 	});
 }
 
-// exports.zip = function() {
-// 	const zip = require('./zip.js');
-// 	return zip.addon().then(function(result) {
-// 		console.log(chalk.green(result));
-// 		return zip.source();
-// 	}).then(function(result) {
-// 		console.log(chalk.green(result));
-// 	}).catch(function (error) {
-// 		console.log(chalk.red(error));
-// 	});
-// }
+exports.zip = function() {
+	const zip = require('./zip.js');
+	return zip.addon().then(function(result) {
+		console.log(chalk.green(result));
+		return zip.source();
+	}).then(function(result) {
+		console.log(chalk.green(result));
+	}).catch(function (error) {
+		console.log(chalk.red(error));
+	});
+}
 
 exports.images = function() {
 	return compiler.images().then(function(result) {
@@ -69,7 +53,7 @@ exports.images = function() {
 	});
 }
 
-exports.manifestAddon = function() {
+exports.manifest = function() {
 	return compiler.manifestAddon().then(function(result) {
 		console.log(chalk.green(result));
 	}).catch(function (error) {
@@ -77,24 +61,8 @@ exports.manifestAddon = function() {
 	});
 }
 
-exports.manifestSite = function() {
-	return compiler.manifestSite().then(function(result) {
-		console.log(chalk.green(result));
-	}).catch(function (error) {
-		console.log(chalk.red(error));
-	});
-}
-
-exports.htmlAddon = function() {
+exports.html = function() {
 	return compiler.htmlAddon().then(function(result) {
-		console.log(chalk.green(result));
-	}).catch(function (error) {
-		console.log(chalk.red(error));
-	});
-}
-
-exports.htmlSite = function() {
-	return compiler.htmlSite().then(function(result) {
 		console.log(chalk.green(result));
 	}).catch(function (error) {
 		console.log(chalk.red(error));

@@ -11,17 +11,13 @@ Il est possible d'ouvrir le convertisseur dans une fenêtre séparée pour évit
 
 ## Développement
 
-Le Javascript est réalisée avec [React](https://reactjs.org) et est dans un bundle créé grâce à [Webpack](https://webpack.js.org).
+Le Javascript est réalisée avec [React](https://reactjs.org) et est dans un bundle créé grâce à [Webpack](https://webpack.js.org). Le CSS est généré grâce à la librairie [LESS](https://lesscss.org)
 
 Installer d'abord les dépendances:
 
 `npm install`
 
-Les fichiers source Javascript et LESS sont dans le dossier `src`. Les fichiers générés sont dans ces deux dossiers :
-* `addon` contient les fichiers destinés à l'extension de Firefox
-* `public` contient les fichiers pour utiliser l'application comme une page web
-
-Il y a 2 fichiers générés : `app.js` et `style.css`.
+Les fichiers source Javascript et LESS sont dans le dossier `src`. Les fichiers sont générés dans le dossier `addon` qui contient les fichiers destinés à l'extension Firefox.
 
 Pour compiler les fichiers Javascript et CSS :
 

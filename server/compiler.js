@@ -50,11 +50,7 @@ const css = function(conf) {
 }
 
 exports.cssAddon = function() {
-	return css(config.cssAddon);
-}
-
-exports.cssSite = function() {
-	return css(config.cssSite);
+	return css(config.css);
 }
 
 const js = function(conf) {
@@ -85,11 +81,7 @@ const js = function(conf) {
 }
 
 exports.jsAddon = function() {
-	return js(config.jsAddon);
-}
-
-exports.jsSite = function() {
-	return js(config.jsSite);
+	return js(config.js);
 }
 
 exports.serve = function () {
@@ -98,14 +90,14 @@ exports.serve = function () {
 			const express = require('express');
 			const app = express();
 
-			const port = config.app.port || 3007;
+			const port = config.app.port || 3016;
 
 			app.get('/', function (req, res) {
-				res.sendFile(baseDir+'/public/index.html');
+				res.sendFile(baseDir+'/addon/index.html');
 			});
 
 			// Static files
-			app.use('/', express.static(baseDir+'/public'));
+			app.use('/', express.static(baseDir+'/addon'));
 
 			app.listen(port);
 			resolve(port);
@@ -137,15 +129,11 @@ exports.images = function() {
 	const sharp = require('sharp');
 
 	return new Promise(function(resolve, reject) {
-		if (!fs.existsSync('./public/img')) {
-			fs.mkdirSync('./public/img');
-		}
 		if (!fs.existsSync('./addon/img')) {
 			fs.mkdirSync('./addon/img');
 		}
 
 		fs.copyFileSync(baseDir+'/src/img/new_window.png', baseDir+'/addon/img/new_window.png');
-		fs.copyFileSync(baseDir+'/src/img/new_window.png', baseDir+'/public/img/new_window.png');
 
 		const formats = config.app.iconFormats;
 
@@ -157,10 +145,6 @@ exports.images = function() {
 				reject(error);
 			});
 		})).then(function() {
-			for (let i=0; i<formats.length; i++) {
-				fs.copyFileSync(baseDir+'/addon/img/logo-'+formats[i]+'.png', baseDir+'/public/img/logo-'+formats[i]+'.png');
-			}
-
 			resolve('Images generated successfully');
 		});
 	});
@@ -168,45 +152,15 @@ exports.images = function() {
 
 exports.manifestAddon = function() {
 	return new Promise(function (resolve, reject) {
-		const manifest = require(baseDir+'/src/static/manifest-addon');
+		const manifest = require(baseDir+'/src/static/manifest');
 		fs.writeFileSync(baseDir+'/addon/manifest.json', JSON.stringify(manifest, null, '\t'));
 		resolve('Manifest generated for addon');
 	});
 }
 
-exports.manifestSite = function() {
-	return new Promise(function(resolve, reject) {
-		const manifest = require(baseDir+'/src/static/manifest-site.json');
-		const packageJson = require(baseDir+'/package.json');
-		manifest.short_name = config.app.name;
-		manifest.name = config.app.name;
-		manifest.icons = [];
-		for (let i=0; i<config.app.iconFormats.length; i++) {
-			manifest.icons.push({
-				src : 'img/logo-'+config.app.iconFormats[i]+'.png',
-				type : 'image/png',
-				sizes : config.app.iconFormats[i]+'x'+config.app.iconFormats[i],
-			});
-		}
-		manifest.background_color = config.app.themeColor;
-		manifest.theme_color = config.app.themeColor;
-
-		fs.writeFileSync(baseDir+'/public/manifest.json', JSON.stringify(manifest, null, '\t'));
-		resolve('Manifest generated for site');
-	});
-}
-
-exports.htmlSite = function() {
-	return new Promise(function(resolve, reject) {
-		const html = require(baseDir+'/src/static/html-site')(config.app);
-		fs.writeFileSync(baseDir+'/public/index.html', html);
-		resolve('HTML generated for site');
-	});
-}
-
 exports.htmlAddon = function() {
 	return new Promise(function(resolve, reject) {
-		const html = require(baseDir+'/src/static/html-addon')(config.app);
+		const html = require(baseDir+'/src/static/html')(config.app);
 		fs.writeFileSync(baseDir+'/addon/index.html', html);
 		resolve('HTML generated for addon');
 	});
