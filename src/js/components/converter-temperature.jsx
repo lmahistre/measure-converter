@@ -41,18 +41,18 @@ module.exports = class ConverterTemperature extends React.Component {
 					</td>
 				</tr>
 				<tr>
-					<td className="label" title={"Farenheit"}>
+					<td className="label" title={"Fahrenheit"}>
 						<label className="short">{"°F"}</label>
-						<label className="long">{"Farenheit"}</label>
+						<label className="long">{"Fahrenheit"}</label>
 					</td>
 					<td className="input">
 						<div className="input-container">
 							<input
-								name="farenheit"
-								placeholder={"Farenheit"}
+								name="fahrenheit"
+								placeholder={"Fahrenheit"}
 								className="large"
 								onChange={this.handleChange.bind(this)}
-								value={this.state.farenheit}
+								value={this.state.fahrenheit}
 							/>
 						</div>
 					</td>

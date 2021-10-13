@@ -14,3 +14,4 @@
 * Remove `public` folder. The app can no longer be used as a web page
 * Drop support for NPM version 6
 * Generated `addon` folder is no longer included in the source zip file
+* Correct typo

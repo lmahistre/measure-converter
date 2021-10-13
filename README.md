@@ -5,7 +5,7 @@
 This addon instantly converts measurements from and to different units:
 * Length: centimeters and inches
 * Weight: kilograms and pounds
-* Temperature: Celsius and Farenheit
+* Temperature: Celsius and Fahrenheit
 
 It is possible to display the converter in a separate window to avoid losing converted data.
 
@@ -14,7 +14,7 @@ It is possible to display the converter in a separate window to avoid losing con
 ### Requirements
 
 * NodeJS version 10 or higher
-* NPM vresion 7 or higher
+* NPM version 7 or higher
 
 ### Structure of the project
 
@@ -70,8 +70,8 @@ To build the application and create Zip files containing the addon code and sour
 `npm run publish`
 
 This action generates all the files in the `addon` folder (`app.js`, `style.css`, `index.html`, `manifest.json` and images), then creates two zip files:
-* `main.zip`: the zip file containing the code of the Firefox addon. It is only made with the content of the folder `addon`. This file is uploaded on Mozilla website to create the .xpi file.
-* `source.zip`: the zip file containing the source code. It contains all the content of the development repository. This file is uploaded on Mozilla website to provide the source code.
+* `measure-converter-[VERSION].zip`: the zip file containing the code of the Firefox addon. It is only made with the content of the folder `addon`. This file is uploaded on Mozilla website to create the .xpi file.
+* `measure-converter-[VERSION].src.zip`: the zip file containing the source code. It contains all the content of the development repository. This file is uploaded on Mozilla website to provide the source code.
 
 The package for the addon is made from folder `addon`, which contains static files, manifest and html.
 

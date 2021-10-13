@@ -24,11 +24,11 @@ exports.temperature = function(input, type) {
 
 	if (type == 'celsius') {
 		out.celsius = tools.validateFloat(input);
-		out.farenheit = converter.convertCelsiusToFarenheit(out.celsius);
+		out.fahrenheit = converter.convertCelsiusToFahrenheit(out.celsius);
 	}
-	else if (type == 'farenheit') {
-		out.farenheit = tools.validateFloat(input);
-		out.celsius = converter.convertFarenheitToCelsius(out.farenheit);
+	else if (type == 'fahrenheit') {
+		out.fahrenheit = tools.validateFloat(input);
+		out.celsius = converter.convertFahrenheitToCelsius(out.fahrenheit);
 	}
 	else {
 		return;
